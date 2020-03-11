@@ -1,4 +1,5 @@
-﻿using GroceryShop.Dominio.ObjetoDeValor;
+﻿using GroceryShop.Dominio.Enumeradores;
+using GroceryShop.Dominio.ObjetoDeValor;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +10,11 @@ namespace GroceryShop.Dominio.Entidades
     {
         public int Id { get; set; }
         public DateTime DataPedido { get; set; }
+        public DateTime DataAtualizacao { get; set; }
         public int UsuarioId { get; set; }
         public virtual Usuario Usuario { get; set; }
         public DateTime DataPrevisaoEntrega { get; set; }
+        public StatusPedidoEnum StatusPedido { get; set; }
 
         // Endereço
         public string CEP { get; set; }

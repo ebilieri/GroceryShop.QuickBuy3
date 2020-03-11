@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using GroceryShop.Dominio.Entidades.Documentos;
+using GroceryShop.Dominio.Enumeradores;
+using System.Collections.Generic;
 
 namespace GroceryShop.Dominio.Entidades
 {
@@ -9,6 +11,8 @@ namespace GroceryShop.Dominio.Entidades
         public string Senha { get; set; }
         public string Nome { get; set; }
         public string SobreNome { get; set; }
+        public TipoDocumentoEnum TipoPessoa { get; set; }
+        public string Documento { get; set; }
         public bool EhAdministrador { get; set; }
 
         /// <summary>
@@ -25,7 +29,13 @@ namespace GroceryShop.Dominio.Entidades
 
             if (string.IsNullOrEmpty(Senha))
                 AdicionarMensagem("Senha é de preenchimento obrigatório");
+
+            if (TipoPessoa == TipoDocumentoEnum.PessoaFisica && CpfValidacao.Validar(Documento))
+                AdicionarMensagem("Cpf Inválido");
+
+            if (TipoPessoa == TipoDocumentoEnum.PessoaJuridica && CnpjValidacao.Validar(Documento))
+                AdicionarMensagem("Cnpj Inválido");
         }
     }
-  
+
 }

@@ -19,6 +19,8 @@ namespace GroceryShop.Repositorio.Config
 
             builder.Property(u => u.Senha).IsRequired().HasMaxLength(400);
 
+            builder.Property(u => u.Documento).IsRequired().HasMaxLength(20);
+
             // Mapeamento Relacionamento Usuario - Pedidos
             builder.HasMany(u => u.Pedidos)
                 .WithOne(p => p.Usuario);
