@@ -2,6 +2,18 @@
   <form class="form-signin">
     <h1 class="h3 mb-3 font-weight-normal login">Cadastrar novo usuário</h1>
 
+
+    <!--Tipo pessoa-->
+    <!--<div class="text-left text-secondary">
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" checked>
+      <label class="form-check-label" for="inlineRadio1">Pessoa Física</label>
+    </div>
+    <div class="form-check form-check-inline">
+      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+      <label class="form-check-label" for="inlineRadio2">Pessoa Jurídica</label>
+    </div>
+  </div>-->
     <!--Nome-->
     <label for="inputNome" class="sr-only">Nome</label>
     <input type="text" id="inputNome" name="nome"
@@ -37,6 +49,26 @@
     <div class="invalid-feedback mb-2" *ngIf="sobreNome.invalid && (sobreNome.dirty || sobreNome.touched)">
       <div *ngIf="sobreNome.errors.required">
         Sobrenome é de preenchimento obrigatório
+      </div>
+    </div>
+
+
+    <!--Documento-->    
+    <label for="inputDocumento" class="sr-only">Documento</label>
+    <input type="text" id="inputDocumento" name="documento"
+           class="form-control mb-1"
+           [ngClass]="{
+            'is-invalid':documento.invalid && (documento.dirty || documento.touched),
+            'is-valid':documento.valid && (documento.dirty || documento.touched)
+           }"
+           placeholder="Informe o seu documento"
+           [(ngModel)]="usuario.documento"
+           #documento="ngModel"
+           required />
+
+    <div class="invalid-feedback mb-2" *ngIf="documento.invalid && (documento.dirty || documento.touched)">
+      <div *ngIf="documento.errors.required">
+        Documento é de preenchimento obrigatório
       </div>
     </div>
 
@@ -88,15 +120,15 @@
     </button>
     <div class="mb-2"><a [routerLink]='["/entrar"]'>Voltar</a></div>
 
-  <!--Mensagem Validação-->
+    <!--Mensagem Validação-->
     <div class="alert alert-danger" *ngIf="mensagem">
       {{mensagem}}
     </div>
 
-  <!--Mensagem cadastrado com sucesso-->
+    <!--Mensagem cadastrado com sucesso-->
     <div class="alert alert-success" *ngIf="usuarioCadastrado">
       Usuário cadastrado com sucesso! <a class="alert-link" [routerLink]='["/entrar"]'>Clique aqui</a> para entrar com a sua conta no sistema.
     </div>
   </form>
-  
+
 </div>
