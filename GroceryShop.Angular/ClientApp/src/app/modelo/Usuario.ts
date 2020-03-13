@@ -1,5 +1,6 @@
 export class Usuario {
   id: number;
+  tipoPessoaForm: string;
   tipoPessoa: number;
   email: string;
   senha: string;

@@ -24,17 +24,26 @@ namespace GroceryShop.Dominio.Entidades
         {
             LimparMensagemValidacao();
 
-            if (string.IsNullOrEmpty(Email))
+            if (string.IsNullOrWhiteSpace(Email))
                 AdicionarMensagem("Email é de preenchimento obrigatório");
 
-            if (string.IsNullOrEmpty(Senha))
+            if (string.IsNullOrWhiteSpace(Senha))
                 AdicionarMensagem("Senha é de preenchimento obrigatório");
 
-            if (TipoPessoa == TipoDocumentoEnum.PessoaFisica && CpfValidacao.Validar(Documento))
-                AdicionarMensagem("Cpf Inválido");
+            if ((int)TipoPessoa <= 0)
+                AdicionarMensagem("Informe o tipo de pessoa");
 
-            if (TipoPessoa == TipoDocumentoEnum.PessoaJuridica && CnpjValidacao.Validar(Documento))
-                AdicionarMensagem("Cnpj Inválido");
+            if (string.IsNullOrWhiteSpace(Documento))
+                AdicionarMensagem("Documento é de preenchimento obrigatório");
+
+            if (!string.IsNullOrWhiteSpace(Documento))
+            {
+                if (TipoPessoa == TipoDocumentoEnum.PessoaFisica && !CpfValidacao.IsCpf(Documento))
+                    AdicionarMensagem("Cpf Inválido");
+
+                if (TipoPessoa == TipoDocumentoEnum.PessoaJuridica && !CnpjValidacao.IsCnpj(Documento))
+                    AdicionarMensagem("Cnpj Inválido");
+            }
         }
     }
 

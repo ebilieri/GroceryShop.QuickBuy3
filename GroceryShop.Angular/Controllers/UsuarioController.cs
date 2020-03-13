@@ -34,6 +34,12 @@ namespace GroceryShop.Angular.Controllers
         {
             try
             {
+                usuario.Validate();
+                if (!usuario.EhValido)
+                {
+                    return BadRequest(usuario.ObterMensageValidacao());
+                }
+
                 var usuarioCadastrado = _usuarioRepositorio.Obter(usuario.Email);
                 if (usuarioCadastrado == null)
                 {

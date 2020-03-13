@@ -4,16 +4,22 @@
 
 
     <!--Tipo pessoa-->
-    <!--<div class="text-left text-secondary">
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" checked>
-      <label class="form-check-label" for="inlineRadio1">Pessoa Física</label>
+    <div class="form-control text-left mb-1">
+      <label class="radio-inline mb-0" for="tipoPessoa">
+        <input type="radio"
+               name="tipoPessoa" id="tipoPessoaf" value="1"
+               [(ngModel)]="usuario.tipoPessoaForm"
+               #tipoPessoa="ngModel"> Pessoa Física
+      </label>
+      &nbsp;  &nbsp;
+      <label class="radio-inline mb-0" for="tipoPessoa">
+        <input type="radio"
+               name="tipoPessoa" id="tipoPessoaj" value="2"
+               [(ngModel)]="usuario.tipoPessoaForm"
+               #tipoPessoa="ngModel"> Pessoa Jurídica
+      </label>
     </div>
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-      <label class="form-check-label" for="inlineRadio2">Pessoa Jurídica</label>
-    </div>
-  </div>-->
+
     <!--Nome-->
     <label for="inputNome" class="sr-only">Nome</label>
     <input type="text" id="inputNome" name="nome"
@@ -53,7 +59,7 @@
     </div>
 
 
-    <!--Documento-->    
+    <!--Documento-->
     <label for="inputDocumento" class="sr-only">Documento</label>
     <input type="text" id="inputDocumento" name="documento"
            class="form-control mb-1"

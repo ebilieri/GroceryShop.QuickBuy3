@@ -54,7 +54,7 @@ export class UsuarioServico {
    * Cadastrar novo usuario
    */
   public cadastrarUsuario(usuario: Usuario): Observable<Usuario> {
-
+    usuario.tipoPessoa = Number(usuario.tipoPessoaForm);
     return this.http.post<Usuario>(this.baseURL + 'api/usuario', JSON.stringify(usuario), { headers: this.headers });
   }
 }

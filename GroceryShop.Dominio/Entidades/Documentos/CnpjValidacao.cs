@@ -1,60 +1,40 @@
-﻿using System;
-using System.Linq;
-
-namespace GroceryShop.Dominio.Entidades.Documentos
+﻿namespace GroceryShop.Dominio.Entidades.Documentos
 {
-    public class CnpjValidacao
+	public class CnpjValidacao
     {
-        public const int TamanhoCnpj = 14;
-
-        public static bool Validar(string cpnj)
-        {
-            var cnpjNumeros = Utils.ApenasNumeros(cpnj);
-
-            if (!TemTamanhoValido(cnpjNumeros)) return false;
-
-            return !TemDigitosRepetidos(cnpjNumeros) && TemDigitosValidos(cnpjNumeros);
-        }
-
-        private static bool TemTamanhoValido(string valor)
-        {
-            return valor.Length == TamanhoCnpj;
-        }
-
-        private static bool TemDigitosRepetidos(string valor)
-        {
-            string[] invalidNumbers =
-            {
-                "00000000000000",
-                "11111111111111",
-                "22222222222222",
-                "33333333333333",
-                "44444444444444",
-                "55555555555555",
-                "66666666666666",
-                "77777777777777",
-                "88888888888888",
-                "99999999999999"
-            };
-
-            return invalidNumbers.Contains(valor);
-        }
-
-        private static bool TemDigitosValidos(string valor)
-        {
-            var number = valor.Substring(0, TamanhoCnpj - 2);
-
-            var digitoVerificador = new DigitoVerificador(number)
-                .ComMultiplicadoresDeAte(2, 9)
-                .Substituindo("0", 10, 11);
-
-            var firstDigit = digitoVerificador.CalculaDigito();
-
-            digitoVerificador.AddDigito(firstDigit);
-
-            var secondDigit = digitoVerificador.CalculaDigito();
-
-            return string.Concat(firstDigit, secondDigit) == valor.Substring(TamanhoCnpj - 2, 2);
-        }
-    }
+		public static bool IsCnpj(string cnpj)
+		{
+			int[] multiplicador1 = new int[12] { 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2 };
+			int[] multiplicador2 = new int[13] { 6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2 };
+			int soma;
+			int resto;
+			string digito;
+			string tempCnpj;
+			cnpj = cnpj.Trim();
+			cnpj = cnpj.Replace(".", "").Replace("-", "").Replace("/", "");
+			if (cnpj.Length != 14)
+				return false;
+			tempCnpj = cnpj.Substring(0, 12);
+			soma = 0;
+			for (int i = 0; i < 12; i++)
+				soma += int.Parse(tempCnpj[i].ToString()) * multiplicador1[i];
+			resto = (soma % 11);
+			if (resto < 2)
+				resto = 0;
+			else
+				resto = 11 - resto;
+			digito = resto.ToString();
+			tempCnpj = tempCnpj + digito;
+			soma = 0;
+			for (int i = 0; i < 13; i++)
+				soma += int.Parse(tempCnpj[i].ToString()) * multiplicador2[i];
+			resto = (soma % 11);
+			if (resto < 2)
+				resto = 0;
+			else
+				resto = 11 - resto;
+			digito = digito + resto.ToString();
+			return cnpj.EndsWith(digito);
+		}
+	}
 }

@@ -21,6 +21,7 @@ export class CadastroUsuarioComponent implements OnInit {
 
   ngOnInit(): void {
     this.usuario = new Usuario();
+    this.usuario.tipoPessoaForm = "1";
   }
 
   public cadastrarUsuario() {
