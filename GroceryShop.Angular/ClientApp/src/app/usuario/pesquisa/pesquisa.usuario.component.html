@@ -1,5 +1,4 @@
 <h1 class="h3 mb-3 font-weight-normal titulo">Pesquisa de usuarios</h1>
-<button class="btn btn-primary mb-2" (click)="adicionarUsuario()">Adicionar Usuario</button>
 
 <div class="d-flex align-items-center mb-2" *ngIf="!usuarios">
   Carregando usuarios...
@@ -28,8 +27,7 @@
       <td style="width:40%">{{p.sobreNome}}</td>
       <td style="width:10%">{{p.email}}</td>
       <td style="width:10%">{{p.documento}}</td>
-      <td><button class="btn btn-success btn-sm" (click)="editarUsuario(p)">Editar</button></td>
-      <td><button class="btn btn-danger btn-sm" (click)="deletarUsuario(p)">Excluir</button></td>
+      <td><button class="btn btn-success btn-sm" (click)="visualizarUsuario(p)">Visualizar</button></td>      
     </tr>
   </tbody>
 </table>
