@@ -21,7 +21,7 @@ namespace GroceryShop.Angular.Controllers
         {
             try
             {
-                return Ok();
+                return Ok(_usuarioRepositorio.ObterTodos());
             }
             catch (Exception ex)
             {

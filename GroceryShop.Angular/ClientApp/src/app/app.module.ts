@@ -29,6 +29,7 @@ import { LojaProdutoComponent } from './loja/produto/loja.produto.component';
 import { LojaEfetivarComponent } from './loja/efetivar/loja.efetivar.component';
 import { PedidoServico } from './servicos/pedido/pedido.servico';
 import { LojaCompraFinalizadaComponent } from './loja/efetivar/loja.compra.finalizada.component';
+import { PesquisaUsuarioComponent } from './usuario/pesquisa/pesquisa.usuario.component';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { LojaCompraFinalizadaComponent } from './loja/efetivar/loja.compra.final
     LojaPesquisaComponent,
     LojaProdutoComponent,
     LojaEfetivarComponent,
-    LojaCompraFinalizadaComponent
+    LojaCompraFinalizadaComponent,
+    PesquisaUsuarioComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -65,6 +67,7 @@ import { LojaCompraFinalizadaComponent } from './loja/efetivar/loja.compra.final
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'produto', component: ProdutoComponent, canActivate: [GuardaRotas] }, // mapeamento das rotas
       { path: 'pesquisar-produto', component: PesquisaProdutoComponent, canActivate: [GuardaRotas] },
+      { path: 'pesquisar-usuario', component: PesquisaUsuarioComponent, canActivate:[GuardaRotas]},
       { path: 'entrar', component: LoginComponent },
       { path: 'novo-usuario', component: CadastroUsuarioComponent },
       { path: 'loja-produto', component: LojaProdutoComponent },

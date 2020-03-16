@@ -57,4 +57,10 @@ export class UsuarioServico {
     usuario.tipoPessoa = Number(usuario.tipoPessoaForm);
     return this.http.post<Usuario>(this.baseURL + 'api/usuario', JSON.stringify(usuario), { headers: this.headers });
   }
+
+
+  public obterTodosUsuarios(): Observable<Usuario[]> {
+
+    return this.http.get<Usuario[]>(this.baseURL + 'api/usuario');
+  }
 }

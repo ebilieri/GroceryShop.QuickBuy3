@@ -59,6 +59,7 @@
     <None Remove="ClientApp\src\app\usuario\cadastro\cadastro.usuario.component.ts" />
     <None Remove="ClientApp\src\app\usuario\login\login.component.ts" />
     <None Remove="ClientApp\src\app\autorizacao\guarda.rotas.ts" />
+    <None Remove="ClientApp\src\app\usuario\pesquisa\pesquisa.usuario.component.ts" />
   </ItemGroup>
 
   <ItemGroup>
@@ -90,6 +91,7 @@
     <TypeScriptCompile Include="ClientApp\src\app\usuario\cadastro\cadastro.usuario.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\usuario\login\login.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\autorizacao\guarda.rotas.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\usuario\pesquisa\pesquisa.usuario.component.ts" />
   </ItemGroup>
 
   <ItemGroup>
@@ -102,7 +104,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ClientApp\src\app\usuario\pesquisa\" />
     <Folder Include="wwwroot\arquivos\" />
   </ItemGroup>
 
